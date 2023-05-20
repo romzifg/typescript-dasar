@@ -17,7 +17,7 @@ interface Intel extends IProcessor {
 }
 
 interface AMD extends IProcessor {
-  precisionBoost: boolean;
+  precisionBoost?: boolean; // ? untuk optional
 }
 
 function createProcessorIntel(processor: Intel): void {
@@ -46,7 +46,7 @@ function createProcessorAmd(processor: AMD): void {
     base model: ${processor.baseModel}
     model name: ${processor.modelName}
     kecepatan : ${processor.clockSize}
-    turbo boost: ${processor.precisionBoost}
+    precision boost: ${processor.precisionBoost ?? "tidak ada"}
     core total: ${processor.coreTotal}
     threed total : ${processor.threedTotal}
     `);
@@ -72,5 +72,15 @@ const AmdRyzen5: AMD = {
   threedTotal: 12,
 };
 
+const AmdRyzen3: AMD = {
+  brand: "AMD",
+  baseModel: "Ryzen 3",
+  modelName: "1300",
+  clockSize: 3.7,
+  coreTotal: 4,
+  threedTotal: 4,
+};
+
 createProcessorIntel(intelCoreI5);
 createProcessorAmd(AmdRyzen5);
+createProcessorAmd(AmdRyzen3);

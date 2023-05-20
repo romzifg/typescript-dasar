@@ -15,6 +15,7 @@ function createProcessorIntel(processor) {
   `);
 }
 function createProcessorAmd(processor) {
+    var _a;
     console.log(`
     --------
     Terima kasih ${processor.brand}
@@ -24,7 +25,7 @@ function createProcessorAmd(processor) {
     base model: ${processor.baseModel}
     model name: ${processor.modelName}
     kecepatan : ${processor.clockSize}
-    turbo boost: ${processor.precisionBoost}
+    precision boost: ${(_a = processor.precisionBoost) !== null && _a !== void 0 ? _a : "tidak ada"}
     core total: ${processor.coreTotal}
     threed total : ${processor.threedTotal}
     `);
@@ -47,5 +48,14 @@ const AmdRyzen5 = {
     coreTotal: 8,
     threedTotal: 12,
 };
+const AmdRyzen3 = {
+    brand: "AMD",
+    baseModel: "Ryzen 3",
+    modelName: "1300",
+    clockSize: 3.7,
+    coreTotal: 4,
+    threedTotal: 4,
+};
 createProcessorIntel(intelCoreI5);
 createProcessorAmd(AmdRyzen5);
+createProcessorAmd(AmdRyzen3);
